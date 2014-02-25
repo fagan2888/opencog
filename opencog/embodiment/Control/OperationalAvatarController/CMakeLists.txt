@@ -66,6 +66,19 @@ IF (HAVE_ZMQ)
 	TARGET_LINK_LIBRARIES (oac ${ZMQ_LIBRARIES})
 ENDIF (HAVE_ZMQ)
 
+IF (HAVE_ROS)
+        TARGET_LINK_LIBRARIES (oac ${ROS_LIBRARIES})
+ENDIF (HAVE_ROS)
+
+ADD_EXECUTABLE (ROSTester ROSTester.cc)
+TARGET_LINK_LIBRARIES (ROSTester
+        oac
+        comboreduct
+        AvatarComboVocabulary
+        AtomSpaceExtensions
+        ImaginaryLife
+        ${Boost_THREAD_LIBRARY}
+)
 
 ADD_EXECUTABLE (OACTester OACTester.cc)
 TARGET_LINK_LIBRARIES (OACTester
